@@ -23,9 +23,12 @@ const orm = {
         });
     },
 
-    update: (tableInput, cols, boolean, condition, cb) => {
-        var queryString = `update ${tableInput} SET ${cols} = ${boolean} WHERE ${condition}`;
-        connection.query(queryString, (err, res) => {
+    updateOne: (tableInput, cols, condition, cb) => {
+        const queryString = 'update ?? SET ? WHERE ?';
+        const values = [tableInput, cols, condition, cd];
+
+        console.log(queryString);
+        connection.query(queryString, values, (err, res) => {
             if (err) {
                 throw err;
             }
