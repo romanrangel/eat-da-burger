@@ -1,53 +1,38 @@
 const connection = require("../config/connection.js");
 
 const orm = {
-    selectAll: function (tableInput, cb) {
-        var queryAll = "select * from " + tableInput + ";";
-        connection.query(queryAll, function (err, res) {
+    selectAll: (tableInput, cb) => {
+        const queryString = "SELECT * FROM ??";
+        connection.query(queryString, [tableInput], (err, result) => {
             if (err) {
                 throw err;
             }
-            cb(res);
+            cb(result);
         });
     },
 
-    create: function (table, cols, vals, cb) {
-        var queryAdd = "insert into " + table;
+    insertOne: (tableInput, cols, cb) => {
+        const queryString = 'INSERT INTO ?? SET ?'
+        const values = [tableInput, cols];
 
-        queryAdd += " (";
-        queryAdd += cols.toString();
-        queryAdd += ") ";
-        queryAdd += "values (";
-        queryAdd += printQuestionMarks(vals.length);
-        queryAdd += ") ";
-
-        console.log(queryAdd);
-
-        connection.query(queryAdd, vals, function (err, res) {
+        connection.query(queryString, values, (err, result) => {
             if (err) {
                 throw err;
             }
-            cb(res);
-        })
+            cb(result);
+        });
     },
 
-    update: function (table, objColVals, condition, cb) {
-        var queryUpdate = "update " + table;
-
-        queryUpdate += " set ";
-        queryUpdate += objToSql(objColVals);
-        queryUpdate += " where ";
-        queryUpdate += condition;
-
-        console.log(queryUpdate);
-        connection.query(queryUpdate, function (err, res) {
+    update: (tableInput, cols, boolean, condition, cb) => {
+        var queryString = `update ${tableInput} SET ${cols} = ${boolean} WHERE ${condition}`;
+        connection.query(queryString, (err, res) => {
             if (err) {
                 throw err;
             }
-            console.log(res);
-            cb(res);
+            cb(result);
         });
-    }
+
+    },
 };
 
 module.exports = orm;

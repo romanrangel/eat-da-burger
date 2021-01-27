@@ -1,19 +1,10 @@
-CREATE DATABASE burgers_db;
+DROP DATABASE IF EXISTS burger_db;
+CREATE DATABASE burger_db;
+USE burger_db;
 
-USE burgers_db;
-
-CREATE TABLE burgers (
-    id int NOT NULL AUTO_INCREMENT,
-    burger_name VARCHAR(30) NOT NULL,
-    devoured BOOLEAN
-    PRIMARY KEY (id),
+CREATE TABLE burgers(
+  id INT NOT NULL AUTO_INCREMENT,
+  burger_name VARCHAR(50) NOT NULL,
+  devoured BOOLEAN DEFAULT false,
+  PRIMARY KEY (id)
 );
-
-INSERT INTO burgers (burger_name)
-VALUES ("Whopper");
-
-INSERT INTO burgers (burger_name)
-VALUES ("Sourdough");
-
-INSERT INTO burgers (burger_name)
-VALUES ("Deluxe Ribeye");
