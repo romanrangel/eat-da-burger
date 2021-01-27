@@ -1,21 +1,22 @@
-<h2>Burgers Ordered</h2>
-
-<ul>
+<div class="row">
+    <div class="col bg-warning text-dark">
+            <h2 class="text-center">Burgers Ordered</h2>
+      <ul>
   {{#each burgers}}
     {{#unless devoured}}
       <li>
           {{burger_name}}
-          	<button class="change-devoured" data-id="{{id}}">
+          	<button class="change_devoured" data-id="{{id}}">
 		        DEVOUR
 	          </button>
       </li>
     {{/unless}}
   {{/each}}
 </ul>
-
-<h2>These burgers were filing!</h2>
-
-<ul>
+    </div>
+    <div class="col bg-danger text-white text-center">
+            <h2>Burgers Devoured</h2>
+      <ul>
 {{#each burgers}}
     {{#if devoured}}
       <li>
@@ -24,9 +25,10 @@
     {{/if}}
   {{/each}}
 </ul>
-
-<h2>Add a Burger</h2>
-<form>
+    </div>
+    <div class="col bg-warning text-dark text-center">
+        <h2>Add a Burger</h2>
+<form class="create_form">
 
   <div>
     <label for="burger">Burger Name:</label>
@@ -36,3 +38,6 @@
 
   <button type="submit">Add Burger!</button>
 </form>
+    </div>
+  </div>
+</div>
