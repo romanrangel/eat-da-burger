@@ -1,39 +1,47 @@
-<h2>Burgers Ordered</h2>
+<div class="row">
+    <div class="col bg-danger text-white">
+        <h2 class="text-center">Burgers Ordered</h2>
+        <ul>
+            {{#each burgers}}
+                {{#unless devoured}}
 
-<ul>
-  {{#each burgers}}
-  {{#unless devoured}}
- 
-  <li>
-    {{burger_name}}
-    <button class="change-devoured" data-id="{{id}}">
-      EAT
-    </button>
-  </li>
-  {{/unless}}
-  {{/each}}
-</ul>
+                    <li>
+                      <hr class="my-4">
+                        {{ burger_name }}
+                        <button class="change-devoured" data-id="{{ id }}">
+                            EAT
+                        </button>
+                    </li>
+                {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+    <div class="col bg-success text-white">
+        <h2 class="text-center">These burgers were filing!</h2>
 
-<h2>These burgers were filing!</h2>
+        <ul>
+            {{#each burgers}}
+                {{#if devoured}}
 
- <ul>
-  {{#each burgers}}
-  {{#if devoured}}
- 
-  <li>
-    {{burger_name}}
-  </li>
-  {{/if}}
-  {{/each}}
-</ul>
+                    <li>
+                      <hr class="my-4">
+                        {{ burger_name }}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+    <div class="col bg-danger text-white text-center">
+        <h2>Add a Burger</h2>
+        <form class="create_form">
 
-<h2>Add a Burger</h2>
-<form class="create_form">
+            <div class="form-group">
+                <label for="burger">Burger Name:</label>
+                <input type="text" id="burger" name="burger_name"></div>
 
-  <div class="form-group">
-    <label for="burger">Burger Name:</label>
-    <input type="text" id="burger" name="burger_name">
-  </div>
-
-  <button type="submit">Add Burger!</button>
-</form>
+                <button type="submit">Add Burger!</button>
+            </form>
+        <img src="/assets/images/menu.PNG" alt="menu picture" height="200px" width="200px">
+        </div>
+    </div>
+</div>
