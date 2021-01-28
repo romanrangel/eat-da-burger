@@ -11,24 +11,24 @@ const orm = {
         });
     },
 
-    insertOne: (tableInput, row, cb) => {
-        const queryString = "INSERT INTO ?? SET ?"
-        const values = [tableInput, row];
+    insertOne: (tableInput, cols, cb) => {
+        const queryString = 'INSERT INTO ?? SET ?'
+        const values = [tableInput, cols];
 
         connection.query(queryString, values, (err, result) => {
             if (err) {
                 throw err;
             }
             cb(result);
-        })
+        });
     },
-    
 
-    updateOne: (tableInput, update, condition, cb) => {
-        const queryString = "UPDATE ?? SET ? WHERE ?";
-        const values = [tableInput, update, condition]
+    updateOne: (tableInput, cols, condition, cb) => {
+        const queryString = 'update ?? SET ? WHERE ?';
+        const values = [tableInput, cols, condition, cd];
 
-        connection.query(queryString, values, (err, result) => {
+        console.log(queryString);
+        connection.query(queryString, values, (err, res) => {
             if (err) {
                 throw err;
             }
